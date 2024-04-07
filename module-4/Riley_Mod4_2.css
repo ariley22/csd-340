@@ -1,0 +1,40 @@
+#container {
+    text-align: center;
+}
+
+#image-gallery {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 10%;
+}
+
+#last-div {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+figure {
+    text-align: center;
+}
+
+figcaption {
+    font-style: italic;
+    font-size: .75em;
+}
+
+a:link, a:visited {
+   text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline;
+}
