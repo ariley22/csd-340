@@ -1,0 +1,75 @@
+<!-- Amanda Riley : Assignment 11.2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSD 340 Development with HTML and CSS</title>
+    <script>
+        var toDoList = [];
+        var isDisplayed = false;
+
+        function addItem(toDoItem){
+            var listLength = toDoList.length;
+            toDoList.push(toDoItem);
+            var alertString = "Item: " + toDoItem + " added at index " + listLength;
+            alert(alertString);
+        }
+
+        function deleteLastItem(){
+            if(toDoList.length == 0) {
+                alert("List is empty");
+                return;
+            }
+
+            toDoList.pop();
+
+            if(document.getElementById('listDisplay').style.display === 'block'){
+                isDisplayed = false;
+                showList();
+            }
+        }
+
+        function deleteItem(listIndex){
+            toDoList.splice(listIndex, 1);
+
+            if(document.getElementById('listDisplay').style.display === 'block'){
+                isDisplayed = false;
+                showList();
+            }
+        }
+
+        function showList(){
+            var displayArea = document.getElementById('listDisplay');
+
+            isDisplayed = !isDisplayed;
+
+            if(isDisplayed) displayArea.style.display = 'block';
+            else displayArea.style.display = 'none';
+
+            if(toDoList.length == 0) return;
+
+            var writeList = "<ol>";
+            for(var i = 0; i < toDoList.length; ++i){
+                writeList += "<li>" + toDoList[i] + "</li>";
+                writeList += "<input type='button' value='Delete' data-index='" + i + "'onClick='deleteItem(this.dataset.index)'>"
+            }
+            writeList += "</ol>";
+            displayArea.innerHTML = writeList;
+        }
+    </script>
+</head>
+
+<body>
+<header>
+    <h1 align="center">Assignment 11.2: JavaScript - Part 3</h1>
+</header>
+    <div id="container">
+        <input type="text" id="textbox">
+        <input type="button" value="Add" onClick="addItem(document.getElementById('textbox').value)">
+        <input type="button" value="Delete Last Entry" onClick="deleteLastItem()">
+        <input type="button" value="Display" onClick="showList()">
+        
+        <div id="listDisplay"></div>
+    </div>
+</body>
+
+</html>
