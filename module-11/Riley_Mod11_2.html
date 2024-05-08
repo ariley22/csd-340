@@ -4,23 +4,14 @@
 <head>
     <title>CSD 340 Development with HTML and CSS</title>
     <script>
-        var toDoList = [];
+        var toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
         var isDisplayed = false;
 
         function addItem(toDoItem){
             var listLength = toDoList.length;
             toDoList.push(toDoItem);
-            var alertString = "Item: " + toDoItem + " added at index " + listLength;
-            alert(alertString);
-        }
-
-        function deleteLastItem(){
-            if(toDoList.length == 0) {
-                alert("List is empty");
-                return;
-            }
-
-            toDoList.pop();
+            localStorage.setItem('toDoList', JSON.stringify(toDoList));
+            document.getElementById('textbox').value = "";
 
             if(document.getElementById('listDisplay').style.display === 'block'){
                 isDisplayed = false;
@@ -30,6 +21,7 @@
 
         function deleteItem(listIndex){
             toDoList.splice(listIndex, 1);
+            localStorage.setItem('toDoList', JSON.stringify(toDoList));
 
             if(document.getElementById('listDisplay').style.display === 'block'){
                 isDisplayed = false;
@@ -60,12 +52,11 @@
 
 <body>
 <header>
-    <h1 align="center">Assignment 11.2: JavaScript - Part 3</h1>
+    <h1 align="center">To-Do List</h1>
 </header>
     <div id="container">
-        <input type="text" id="textbox">
+        <input type="text" id="textbox" onkeypress="if(event.key === 'Enter') addItem(this.value)">
         <input type="button" value="Add" onClick="addItem(document.getElementById('textbox').value)">
-        <input type="button" value="Delete Last Entry" onClick="deleteLastItem()">
         <input type="button" value="Display" onClick="showList()">
         
         <div id="listDisplay"></div>
