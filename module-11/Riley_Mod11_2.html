@@ -37,7 +37,10 @@
             if(isDisplayed) displayArea.style.display = 'block';
             else displayArea.style.display = 'none';
 
-            if(toDoList.length == 0) return;
+            if(toDoList.length == 0){
+                displayArea.innerHTML = "";
+                return;
+            }
 
             var writeList = "<ol>";
             for(var i = 0; i < toDoList.length; ++i){
