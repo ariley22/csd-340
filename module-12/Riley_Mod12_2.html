@@ -1,0 +1,58 @@
+<!-- Amanda Riley : Assignment 12.2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSD 340 Web Development with HTML and CSS</title>
+    <link href="../module-3/Riley_Mod3_3.css" type="text/css"
+        rel="stylesheet" />
+    <script>
+       var books = ["1. Brave New World", "2. Pride and Prejudice", "3. To Kill a Mockingbird", "4. The Sun Also Rises",
+"5. Fahrenheit 451", "6. Catch-22", "7. A Room of One\'s Own", "8. Of Mice and Men", "9. The Scarlet Letter", "10. Great Expectations"];
+
+       function displayAscending(){
+            var writeList = "";
+            for(var i = 0; i < books.length; ++i){
+                writeList += books[i] + "<br />";
+            }
+            document.getElementById('listDisplay').innerHTML = writeList;
+       }
+       
+       function displayDescending(){
+            var writeList = "";
+            for(var i = books.length-1; i >= 0; --i){
+                writeList += books[i] + "<br />";
+            }
+            document.getElementById('listDisplay').innerHTML = writeList;
+       }
+    </script>
+</head>
+
+<body>
+<div id=”container”>
+    <h1>Assignment 12.2: JavaScript - Part 4</h1>
+    <div id="left-div">
+        <h3>Top 10 Favorite Books</h3>
+        <input type="button" value="Top to Bottom" onClick="displayAscending()">
+        <input type="button" value="Bottom to Top" onClick="displayDescending()">
+        <hr />
+        <div id="listDisplay">
+        <script>displayAscending();</script>
+        </div>
+    </div>
+    <div id="right-div">
+        <h3>5 Things I’ve Learned Since the Course Started</h3>
+        <ul>
+            <li>How to properly use and format HTML</li>
+            <li>How to properly use and format CSS</li>
+            <li>A bit about how people's minds work</li>
+            <li>A bit about colors and contrasts</li>
+            <li>The importance of good UI design</li>
+        </ul>
+    </div>
+    <div id="last-div">
+        <a href="../index.html">back to Landing Page</a>
+    </div>
+</div>
+</body>
+
+</html>
